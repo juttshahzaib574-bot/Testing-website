@@ -97,7 +97,7 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .hero-grid{position:absolute;inset:0;opacity:.022;background-image:linear-gradient(var(--mint) 1px,transparent 1px),linear-gradient(90deg,var(--mint) 1px,transparent 1px);background-size:55px 55px;animation:gridMove 24s linear infinite;}
 @keyframes gridMove{from{transform:translateY(0);}to{transform:translateY(55px);}}
 .hero-right{position:relative;overflow:hidden;}
-.hero-right img{width:100%;height:100%;object-fit:contain;object-position:center;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--night) 0%,rgba(5,12,26,.15) 20%,transparent 50%);}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin-bottom:28px;opacity:0;animation:fadeUp .7s .3s forwards;}
 .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--mint);}
@@ -515,10 +515,9 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
 <nav>
   <a href="index.html" class="logo">Pearl<em>Smile</em><span class="logo-star">✦</span></a>
   <a href="https://maps.google.com/?q=1+Harley+Street,+London+W1G+9QD" target="_blank" class="nav-address-btn" aria-label="View on Google Maps">
-    <div style="display:flex; flex-direction:column; align-items:center; line-height:1.2;">
-      <div><span class="g-icon">G</span> <span class="clinic-icon">🏥</span></div>
-      <div style="color:var(--gold); font-size:0.75rem; letter-spacing:1px;">★★★★★</div>
-    </div>
+    <span class="g-icon">G</span>
+    <span class="clinic-icon">🏥</span>
+    <span class="stars">★★★★★</span>
     <span class="address-text">1 Harley St, London</span>
   </a>
   <div class="nav-links">
