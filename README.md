@@ -472,33 +472,73 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
 }
 @media(max-width:600px){
-  :root{--ban-h:52px;}
-  #ebanner{padding:0 14px;gap:9px;}
-  .ban-txt{font-size:.74rem;}
-  .ban-call{padding:5px 12px;font-size:.7rem;}
+  :root{--ban-h:auto;}
+  #ebanner{padding:12px 40px 12px 16px; flex-wrap:wrap; text-align:left;}
+  .ban-txt{font-size:.8rem; line-height:1.4;}
+  .ban-call{padding:10px 16px; font-size:.75rem; width:100%; text-align:center; margin-top:8px;}
+  .ban-x{top:12px; right:12px; transform:none;}
+
   nav{padding:0 16px;}
-  .hero-left{padding:40px 16px 48px;}
-  .hero-h1{font-size:clamp(2.4rem,9vw,3.2rem);}
-  .hero-sub{font-size:.88rem;}
-  .hero-btns{flex-direction:column;align-items:flex-start;}
-  #stats{padding:40px 16px;}
-  .s-num{font-size:2.8rem;}
-  #services,#gallery,#sotm,#testimonials,#faq,#book,#guide,#location{padding:56px 16px;}
-  footer{padding:44px 16px 22px;}
-  .svc-grid{grid-template-columns:1fr;}
-  .t-grid{grid-template-columns:1fr;}
-  .sotm-img-big img{height:200px;}
-  .sotm-img-half img{height:130px;}
+  .logo{font-size:1.4rem;}
+
+  .hero-left{padding:60px 16px; min-height:85vh; justify-content:flex-end;}
+  .hero-right::after{background:linear-gradient(0deg, var(--night) 15%, rgba(5,12,26,.85) 60%, rgba(5,12,26,.3) 100%);}
+  .hero-h1{font-size:clamp(2.5rem,10vw,3.2rem); margin-bottom:16px;}
+  .hero-sub{font-size:.92rem; margin-bottom:30px;}
+  .hero-btns{flex-direction:column; align-items:stretch; width:100%;}
+  .btn-primary, .btn-ghost-hero{width:100%; justify-content:center; text-align:center; padding:16px;}
+  
+  #stats{grid-template-columns:1fr 1fr; padding:40px 16px;}
+  .stat-cell{padding:24px 10px; border:none;}
+  .stat-cell:nth-child(1), .stat-cell:nth-child(2){border-bottom:1px solid var(--border);}
+  .stat-cell:nth-child(odd){border-right:1px solid var(--border);}
+
+  #services,#gallery,#sotm,#testimonials,#faq,#book,#guide,#location{padding:60px 16px;}
+  
+  .svc-grid{grid-template-columns:1fr; gap:12px; background:transparent;}
+  .svc-card{border:1px solid var(--border); border-radius:var(--radius);}
+  
+  .slide-info{padding:32px 24px;}
+  .slide-title{font-size:1.6rem;}
+  .c-slide{grid-template-columns:1fr;}
+  .ba-wrap{aspect-ratio:4/3;}
+  
+  .sotm-layout{grid-template-columns:1fr; gap:32px;}
+  .sotm-img-big img{height:220px;}
+  .sotm-img-half img{height:140px;}
+  .sotm-body{padding:26px 20px;}
+  
+  .t-grid{grid-template-columns:1fr; gap:16px;}
   .doc-card{grid-template-columns:90px 1fr;}
   .doc-card img{width:90px;}
-  .footer-grid{grid-template-columns:1fr;}
-  .form-card{padding:26px 18px;}
-  .oralyn-win{width:calc(100vw - 18px);right:9px;bottom:104px;max-height:70vh;}
-  #oralyn-bubbles{right:12px;bottom:108px;}
-  #oralyn-btn{right:12px;bottom:12px;width:58px;height:58px;}
+  
+  .faq-layout{grid-template-columns:1fr; gap:40px;}
+  .faq-q{padding:18px 0;}
+  
+  .book-layout{grid-template-columns:1fr; gap:40px;}
+  .form-card{padding:32px 20px;}
+  
+  .guide-layout{grid-template-columns:1fr; gap:40px;}
+  .gf-row{flex-direction:column;}
+  .gf-btn{width:100%; padding:14px;}
+  
+  .loc-layout{grid-template-columns:1fr; gap:40px;}
+  .loc-item{flex-direction:column; align-items:center; text-align:center;}
+  .loc-ico{margin-bottom:10px;}
+  .hrs{grid-template-columns:1fr; text-align:center; gap:4px;}
+  .hrs .day{margin-top:10px; display:block;}
+  .map-embed{height:300px;}
+  
+  .footer-grid{grid-template-columns:1fr; gap:40px; text-align:center;}
+  footer{padding:60px 16px 30px;}
+  .footer-brand{display:flex; flex-direction:column; align-items:center;}
+  .trust-badges, .f-social, .legal-links{justify-content:center;}
+  .footer-bottom{flex-direction:column; text-align:center; gap:20px;}
+  
+  .oralyn-win{width:calc(100vw - 18px); right:9px; bottom:104px; max-height:70vh;}
+  #oralyn-bubbles{right:12px; bottom:108px;}
+  #oralyn-btn{right:12px; bottom:12px; width:58px; height:58px;}
   .pop-box{margin:0 10px;}
-  .map-embed{height:280px;}
-  .c-slide{grid-template-columns:1fr;}
 }
 </style>
 </head>
