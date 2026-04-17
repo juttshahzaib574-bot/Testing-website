@@ -51,7 +51,7 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .nav-address-btn .g-icon{color:#4285F4;font-weight:800;font-size:1rem;}
 .nav-address-btn .clinic-icon{font-size:1rem;}
 .nav-address-btn .stars{color:var(--gold);letter-spacing:1px;font-size:.8rem;}
-@media(max-width:900px){.nav-address-btn .address-text,.nav-address-btn .stars{display:none;} .nav-address-btn{padding:6px 10px;}}
+@media(max-width:900px){.nav-address-btn .address-text,.nav-address-btn .stars{display:none;} .nav-address-btn{padding:6px 10px; position:static; transform:none;}}
 .logo{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--white);display:flex;align-items:center;gap:5px;}
 .logo em{font-style:normal;color:var(--mint);}
 .logo-star{color:var(--gold);font-size:1.1rem;margin-left:3px;}
@@ -510,11 +510,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .vs-card { flex: 0 0 calc(50% - 12px); }
 }
 @media(max-width:600px){
-  :root{--ban-h:auto;}
-  #ebanner{padding:10px 16px;}
-  .ban-btn{flex-direction:column;gap:4px;}
-  .ban-ico{font-size:1.25rem;}
-  .ban-lbl{font-size:.6rem;}
+  :root{--ban-h:42px;}
+  #ebanner{padding:0 12px; height:var(--ban-h); flex-wrap:nowrap;}
+  .ban-btn{flex-direction:row; gap:4px; padding:0;}
+  .ban-ico{font-size:1.1rem;}
+  .ban-lbl{font-size:.65rem; white-space:nowrap;}
 
   nav{padding:0 16px;}
   .logo{font-size:1.4rem;}
