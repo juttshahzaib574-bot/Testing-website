@@ -533,8 +533,9 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
 
   #services,#gallery,#sotm,#video-stories,#testimonials,#faq,#book,#guide,#location{padding:56px 16px;}
   
-  .svc-grid{grid-template-columns:1fr; gap:12px; background:transparent;}
-  .svc-card{border:1px solid var(--border); border-radius:var(--radius);}
+  .svc-grid{display:flex; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:10px 16px 30px; margin-left:-16px; margin-right:-16px; background:transparent; scrollbar-width:none; -ms-overflow-style:none;}
+  .svc-grid::-webkit-scrollbar{display:none;}
+  .svc-card{flex:0 0 85%; scroll-snap-align:center; border:1px solid var(--border); border-radius:var(--radius);}
   
   .slide-info{padding:32px 24px;}
   .slide-title{font-size:1.6rem;}
@@ -546,7 +547,9 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .sotm-img-half img{height:140px;}
   .sotm-body{padding:26px 20px;}
   
-  .t-grid{grid-template-columns:1fr; gap:16px;}
+  .t-grid{display:flex; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:10px 16px 30px; margin-left:-16px; margin-right:-16px; scrollbar-width:none; -ms-overflow-style:none;}
+  .t-grid::-webkit-scrollbar{display:none;}
+  .t-card{flex:0 0 85%; scroll-snap-align:center;}
   .doc-card{grid-template-columns:90px 1fr;}
   .doc-card img{width:90px;}
   
