@@ -221,6 +221,40 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .doc-title{font-size:.77rem;color:var(--slate);margin-bottom:10px;}
 .doc-quote{font-size:.82rem;color:var(--pearl);font-style:italic;line-height:1.65;opacity:.85;}
 
+/* VIDEO STORIES */
+#video-stories { padding: 90px 60px; background: linear-gradient(180deg, var(--night), rgba(0,222,182,0.02)); border-top: 1px solid var(--border); overflow: hidden; }
+.vs-carousel-wrap { position: relative; margin-top: 30px; margin-left: -60px; margin-right: -60px; padding: 20px 60px; }
+.vs-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; }
+.vs-track::-webkit-scrollbar { display: none; }
+.vs-card { flex: 0 0 calc(25% - 18px); scroll-snap-align: start; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s; cursor: pointer; }
+.vs-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--mint); }
+.vs-img-wrap { position: relative; aspect-ratio: 9/16; max-height: 340px; overflow: hidden; }
+.vs-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease); }
+.vs-card:hover .vs-img-wrap img { transform: scale(1.05); }
+.vs-play { position: absolute; bottom: 14px; left: 14px; background: rgba(5, 12, 26, 0.65); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); color: var(--white); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; padding: 7px 14px; border-radius: 20px; display: flex; align-items: center; gap: 8px; z-index: 2; transition: all 0.3s; text-transform: uppercase; }
+.vs-play::before { content: '▶'; color: var(--mint); font-size: 0.75rem; }
+.vs-card:hover .vs-play { background: var(--mint); color: var(--night); border-color: var(--mint); }
+.vs-card:hover .vs-play::before { color: var(--night); }
+.vs-body { padding: 22px 24px; display: flex; flex-direction: column; flex: 1; }
+.vs-name { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 600; color: var(--white); margin-bottom: 20px; }
+.vs-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-top: 1px solid var(--border); font-size: 0.8rem; }
+.vs-lbl { font-weight: 700; color: var(--pearl); }
+.vs-val { color: var(--slate); }
+
+@media(max-width: 1100px) {
+  .vs-carousel-wrap { margin-left: -36px; margin-right: -36px; padding: 20px 36px; }
+  .vs-card { flex: 0 0 calc(33.333% - 16px); }
+}
+@media(max-width: 900px) {
+  .vs-carousel-wrap { margin-left: -22px; margin-right: -22px; padding: 10px 22px; }
+  .vs-card { flex: 0 0 calc(50% - 12px); }
+}
+@media(max-width: 600px) {
+  .vs-carousel-wrap { margin-left: -16px; margin-right: -16px; padding: 10px 16px; }
+  .vs-card { flex: 0 0 75%; }
+  .vs-track { gap: 14px; }
+}
+
 /* TESTIMONIALS */
 #testimonials{padding:90px 60px;background:linear-gradient(180deg,rgba(10,22,40,.5),transparent);}
 .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px;}
@@ -440,12 +474,14 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
 
 /* RESPONSIVE */
 @media(max-width:1100px){
-  nav,#services,#gallery,#sotm,#testimonials,#faq,#book,#guide,#location{padding-left:36px;padding-right:36px;}
+  nav,#services,#gallery,#sotm,#video-stories,#testimonials,#faq,#book,#guide,#location{padding-left:36px;padding-right:36px;}
   footer{padding:60px 36px 28px;}
   #hero{grid-template-columns:1fr;}
   .hero-right{height:100%;}
-  .hero-right::after{background:linear-gradient(90deg,var(--night) 0%,rgba(5,12,26,.8) 50%,rgba(5,12,26,.4) 100%);}
+  .hero-right::after{background:linear-gradient(0deg, var(--night) 15%, rgba(5,12,26,.85) 60%, rgba(5,12,26,.3) 100%);}
   .hero-left{padding:60px 36px 50px;}
+  .vs-carousel-wrap { margin-left: -36px; margin-right: -36px; padding: 20px 36px; }
+  .vs-card { flex: 0 0 calc(33.333% - 16px); }
 }
 @media(max-width:900px){
   nav{padding:0 22px;}
@@ -457,7 +493,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   #stats{grid-template-columns:1fr 1fr;}
   .stat-cell:nth-child(2){border-right:none;}
   .stat-cell:nth-child(3){border-top:1px solid var(--border);}
-  #services,#gallery,#sotm,#testimonials,#faq,#book,#guide,#location{padding:60px 22px;}
+  #services,#gallery,#sotm,#video-stories,#testimonials,#faq,#book,#guide,#location{padding:60px 22px;}
   footer{padding:50px 22px 24px;}
   .svc-grid{grid-template-columns:1fr 1fr;}
   .c-slide{grid-template-columns:1fr;}
@@ -470,6 +506,8 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .guide-layout{grid-template-columns:1fr;gap:40px;}
   .loc-layout{grid-template-columns:1fr;gap:30px;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  .vs-carousel-wrap { margin-left: -22px; margin-right: -22px; padding: 10px 22px; }
+  .vs-card { flex: 0 0 calc(50% - 12px); }
 }
 @media(max-width:600px){
   :root{--ban-h:auto;}
@@ -493,7 +531,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .stat-cell:nth-child(1), .stat-cell:nth-child(2){border-bottom:1px solid var(--border);}
   .stat-cell:nth-child(odd){border-right:1px solid var(--border);}
 
-  #services,#gallery,#sotm,#testimonials,#faq,#book,#guide,#location{padding:60px 16px;}
+  #services,#gallery,#sotm,#video-stories,#testimonials,#faq,#book,#guide,#location{padding:56px 16px;}
   
   .svc-grid{grid-template-columns:1fr; gap:12px; background:transparent;}
   .svc-card{border:1px solid var(--border); border-radius:var(--radius);}
@@ -539,6 +577,10 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   #oralyn-bubbles{right:12px; bottom:108px;}
   #oralyn-btn{right:12px; bottom:12px; width:58px; height:58px;}
   .pop-box{margin:0 10px;}
+  
+  .vs-carousel-wrap { margin-left: -16px; margin-right: -16px; padding: 10px 16px; }
+  .vs-card { flex: 0 0 75%; }
+  .vs-track { gap: 14px; }
 }
 </style>
 </head>
@@ -816,6 +858,75 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
         <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:6px;">Want to be our next Smile of the Month?</div>
         <p style="font-size:.84rem;color:var(--slate);margin-bottom:18px;line-height:1.7;">Book your free consultation today.</p>
         <a href="#book" class="btn-primary" style="font-size:.82rem;padding:11px 24px;">Book Free Consultation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video-stories">
+  <div class="sec-head">
+    <div><div class="eyebrow">Real People</div><h2 class="section-h2">Real <em>Stories</em></h2></div>
+    <div class="carousel-arrows">
+      <button class="c-arr" id="vs-prev" aria-label="Previous">←</button>
+      <button class="c-arr" id="vs-next" aria-label="Next">→</button>
+    </div>
+  </div>
+  <div class="vs-carousel-wrap">
+    <div class="vs-track" id="vs-track">
+      <div class="vs-card reveal">
+        <div class="vs-img-wrap">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=700&fit=crop" alt="Isla" loading="lazy">
+          <div class="vs-play">Play Video</div>
+        </div>
+        <div class="vs-body">
+          <h3 class="vs-name">Isla's Journey</h3>
+          <div class="vs-row"><span class="vs-lbl">Package</span><span class="vs-val">Moderate</span></div>
+          <div class="vs-row"><span class="vs-lbl">Duration</span><span class="vs-val">6 Months</span></div>
+        </div>
+      </div>
+      <div class="vs-card reveal">
+        <div class="vs-img-wrap">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=700&fit=crop" alt="Victoria" loading="lazy">
+          <div class="vs-play">Play Video</div>
+        </div>
+        <div class="vs-body">
+          <h3 class="vs-name">Victoria's Journey</h3>
+          <div class="vs-row"><span class="vs-lbl">Package</span><span class="vs-val">Mild</span></div>
+          <div class="vs-row"><span class="vs-lbl">Duration</span><span class="vs-val">3 Months</span></div>
+        </div>
+      </div>
+      <div class="vs-card reveal">
+        <div class="vs-img-wrap">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=700&fit=crop" alt="Heavenleigh" loading="lazy">
+          <div class="vs-play">Play Video</div>
+        </div>
+        <div class="vs-body">
+          <h3 class="vs-name">Heavenleigh's Journey</h3>
+          <div class="vs-row"><span class="vs-lbl">Package</span><span class="vs-val">Moderate</span></div>
+          <div class="vs-row"><span class="vs-lbl">Duration</span><span class="vs-val">4 Months</span></div>
+        </div>
+      </div>
+      <div class="vs-card reveal">
+        <div class="vs-img-wrap">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=700&fit=crop" alt="Kersha" loading="lazy">
+          <div class="vs-play">Play Video</div>
+        </div>
+        <div class="vs-body">
+          <h3 class="vs-name">Kersha's Journey</h3>
+          <div class="vs-row"><span class="vs-lbl">Package</span><span class="vs-val">Complex</span></div>
+          <div class="vs-row"><span class="vs-lbl">Duration</span><span class="vs-val">9 Months</span></div>
+        </div>
+      </div>
+      <div class="vs-card reveal">
+        <div class="vs-img-wrap">
+          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=700&fit=crop" alt="Chloe" loading="lazy">
+          <div class="vs-play">Play Video</div>
+        </div>
+        <div class="vs-body">
+          <h3 class="vs-name">Chloe's Journey</h3>
+          <div class="vs-row"><span class="vs-lbl">Package</span><span class="vs-val">Mild</span></div>
+          <div class="vs-row"><span class="vs-lbl">Duration</span><span class="vs-val">4 Months</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1424,6 +1535,15 @@ window.addEventListener('scroll', () => {
   setTimeout(() => { if (!inited) oNotif.style.display = 'flex'; }, 4000);
   if (window.location.hash === '#emergency') setTimeout(toggle, 700);
 })();
+
+/* ══════════ VIDEO STORIES ══════════ */
+const vsTrack = document.getElementById('vs-track');
+const vsPrev = document.getElementById('vs-prev');
+const vsNext = document.getElementById('vs-next');
+if (vsTrack && vsPrev && vsNext) {
+  vsPrev.addEventListener('click', () => { vsTrack.scrollBy({ left: -vsTrack.offsetWidth / 2, behavior: 'smooth' }); });
+  vsNext.addEventListener('click', () => { vsTrack.scrollBy({ left: vsTrack.offsetWidth / 2, behavior: 'smooth' }); });
+}
 </script>
 </body>
 </html>
