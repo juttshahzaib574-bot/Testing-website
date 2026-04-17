@@ -38,19 +38,16 @@ button{font-family:'DM Sans',sans-serif;}
 #scroll-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--mint),var(--gold));z-index:9999;width:0;}
 
 /* EMERGENCY BANNER */
-#ebanner{position:sticky;top:0;z-index:950;height:var(--ban-h);background:var(--red);display:flex;align-items:center;justify-content:center;gap:12px;padding:0 50px;}
-.ban-dot{width:7px;height:7px;border-radius:50%;background:#fff;flex-shrink:0;animation:dotPulse 1.4s ease-in-out infinite;}
-@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(1.7);}}
-.ban-txt{font-size:.82rem;font-weight:600;color:#fff;}
-.ban-call{background:#fff;color:var(--red);padding:6px 18px;border-radius:3px;font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
-.ban-call:hover{background:var(--pearl);}
-.ban-x{position:absolute;right:16px;background:none;border:none;color:rgba(255,255,255,.65);font-size:1.3rem;cursor:pointer;padding:6px;line-height:1;}
-.ban-x:hover{color:#fff;}
+#ebanner{position:sticky;top:0;z-index:950;height:var(--ban-h);background:var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 60px;}
+.ban-btn{color:#fff;font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:8px;transition:opacity .3s;}
+.ban-btn:hover{opacity:0.8;}
+.ban-ico{font-size:1.15rem;}
+.ban-lbl{white-space:nowrap;}
 
 /* NAV */
 nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(5,12,26,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
-.nav-address-btn{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid var(--border);padding:6px 14px;border-radius:20px;font-size:.78rem;color:var(--pearl);text-decoration:none;transition:all .3s ease;}
-.nav-address-btn:hover{background:rgba(255,255,255,.1);border-color:var(--mint);transform:translateY(-1px);}
+.nav-address-btn{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--border);padding:8px 16px;border-radius:30px;font-size:.8rem;color:var(--pearl);text-decoration:none;transition:all .3s ease;}
+.nav-address-btn:hover{background:rgba(255,255,255,.1);border-color:var(--mint);transform:translate(-50%, -2px);}
 .nav-address-btn .g-icon{color:#4285F4;font-weight:800;font-size:1rem;}
 .nav-address-btn .clinic-icon{font-size:1rem;}
 .nav-address-btn .stars{color:var(--gold);letter-spacing:1px;font-size:.8rem;}
@@ -191,11 +188,11 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 
 /* SMILE OF THE MONTH */
 #sotm{padding:90px 60px;}
-.sotm-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:start;margin-top:50px;}
+.sotm-layout{display:flex;flex-direction:column;gap:50px;margin-top:50px;}
 .sotm-main{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
 .sotm-imgs{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
 .sotm-img-big{grid-column:span 2;}
-.sotm-img-big img{width:100%;height:280px;object-fit:cover;}
+.sotm-img-big img{width:100%;height:380px;object-fit:cover;}
 .sotm-img-half img{width:100%;height:180px;object-fit:cover;}
 .sotm-body{padding:32px 34px;}
 .sotm-award{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,rgba(200,169,110,.15),rgba(200,169,110,.05));border:1px solid rgba(200,169,110,.3);border-radius:20px;padding:5px 14px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:16px;}
@@ -204,18 +201,19 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .sotm-tx::before{content:'';width:14px;height:1px;background:var(--mint);}
 .sotm-quote{font-family:'Cormorant Garamond',serif;font-size:1.06rem;font-style:italic;color:var(--pearl);line-height:1.75;opacity:.9;}
 .sotm-stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-top:14px;}
-.sotm-side{display:flex;flex-direction:column;gap:22px;}
-.sotm-mini{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;transition:all .4s var(--ease);}
-.sotm-mini:hover{border-color:var(--border2);transform:translateX(4px);}
-.sotm-mini img{width:100px;object-fit:cover;flex-shrink:0;}
-.sotm-mini-body{padding:16px 18px;display:flex;flex-direction:column;justify-content:center;}
+.sotm-side{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.sotm-mini{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:all .4s var(--ease);height:100%;}
+.sotm-mini:hover{border-color:var(--mint);transform:translateY(-4px);}
+.sotm-mini img{width:100%;height:220px;object-fit:cover;flex-shrink:0;}
+.sotm-mini-body{padding:24px;display:flex;flex-direction:column;justify-content:center;flex:1;}
 .sotm-mini-badge{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin-bottom:5px;}
 .sotm-mini-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:4px;}
 .sotm-mini-tx{font-size:.76rem;color:var(--slate);}
 .sotm-mini-stars{color:var(--gold);font-size:.72rem;margin-top:6px;}
-.doc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:120px 1fr;}
-.doc-card img{width:120px;height:100%;object-fit:cover;object-position:top;}
-.doc-body{padding:20px;}
+.doc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;height:100%;transition:all .4s var(--ease);}
+.doc-card:hover{border-color:var(--mint);transform:translateY(-4px);}
+.doc-card img{width:100%;height:220px;object-fit:cover;object-position:top;flex-shrink:0;}
+.doc-body{padding:24px;display:flex;flex-direction:column;flex:1;}
 .doc-ey{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:6px;}
 .doc-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--white);margin-bottom:4px;}
 .doc-title{font-size:.77rem;color:var(--slate);margin-bottom:10px;}
@@ -246,6 +244,7 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
   .vs-card { flex: 0 0 calc(33.333% - 16px); }
 }
 @media(max-width: 900px) {
+  .sotm-layout{gap:30px;}
   .vs-carousel-wrap { margin-left: -22px; margin-right: -22px; padding: 10px 22px; }
   .vs-card { flex: 0 0 calc(50% - 12px); }
 }
@@ -484,6 +483,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .vs-card { flex: 0 0 calc(33.333% - 16px); }
 }
 @media(max-width:900px){
+  #ebanner{padding:0 22px;}
   nav{padding:0 22px;}
   .nav-links{display:none;}
   .ham{display:flex;}
@@ -499,7 +499,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .c-slide{grid-template-columns:1fr;}
   .ba-wrap{aspect-ratio:4/3;}
   .slide-info{padding:34px 28px;}
-  .sotm-layout{grid-template-columns:1fr;gap:30px;}
+  .sotm-layout{gap:30px;}
   .t-grid{grid-template-columns:1fr 1fr;}
   .faq-layout{grid-template-columns:1fr;gap:36px;}
   .book-layout{grid-template-columns:1fr;gap:36px;}
@@ -511,10 +511,10 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
 }
 @media(max-width:600px){
   :root{--ban-h:auto;}
-  #ebanner{padding:12px 40px 12px 16px; flex-wrap:wrap; text-align:left;}
-  .ban-txt{font-size:.8rem; line-height:1.4;}
-  .ban-call{padding:10px 16px; font-size:.75rem; width:100%; text-align:center; margin-top:8px;}
-  .ban-x{top:12px; right:12px; transform:none;}
+  #ebanner{padding:10px 16px;}
+  .ban-btn{flex-direction:column;gap:4px;}
+  .ban-ico{font-size:1.25rem;}
+  .ban-lbl{font-size:.6rem;}
 
   nav{padding:0 16px;}
   .logo{font-size:1.4rem;}
@@ -542,16 +542,15 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .c-slide{grid-template-columns:1fr;}
   .ba-wrap{aspect-ratio:4/3;}
   
-  .sotm-layout{grid-template-columns:1fr; gap:32px;}
+  .sotm-layout{gap:32px;}
   .sotm-img-big img{height:220px;}
   .sotm-img-half img{height:140px;}
   .sotm-body{padding:26px 20px;}
+  .sotm-side { grid-template-columns: 1fr 1fr; }
   
   .t-grid{display:flex; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:10px 16px 30px; margin-left:-16px; margin-right:-16px; scrollbar-width:none; -ms-overflow-style:none;}
   .t-grid::-webkit-scrollbar{display:none;}
   .t-card{flex:0 0 85%; scroll-snap-align:center;}
-  .doc-card{grid-template-columns:90px 1fr;}
-  .doc-card img{width:90px;}
   
   .faq-layout{grid-template-columns:1fr; gap:40px;}
   .faq-q{padding:18px 0;}
@@ -591,10 +590,9 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
 <div id="scroll-bar"></div>
 
 <div id="ebanner">
-  <div class="ban-dot"></div>
-  <p class="ban-txt"><strong>Dental Pain?</strong> Same-day emergency appointments available — don't wait.</p>
-  <a href="tel:+442000000000" class="ban-call">📞 Call Now</a>
-  <button class="ban-x" onclick="this.parentElement.style.display='none';document.documentElement.style.setProperty('--ban-h','0px')" aria-label="Close">×</button>
+  <a href="https://wa.me/442000000000" class="ban-btn"><span class="ban-ico">💬</span><span class="ban-lbl">WhatsApp</span></a>
+  <a href="https://maps.google.com/?q=1+Harley+Street,+London+W1G+9QD" target="_blank" class="ban-btn"><span class="ban-ico">📍</span><span class="ban-lbl">Clinic Address</span></a>
+  <a href="tel:+442000000000" class="ban-btn"><span class="ban-ico">📞</span><span class="ban-lbl">Call Now</span></a>
 </div>
 
 <nav>
@@ -857,7 +855,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
           <p class="doc-quote">"Every patient deserves to feel proud of their smile. My goal is not just to treat teeth — it's to change lives."</p>
         </div>
       </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;" class="reveal">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;display:flex;flex-direction:column;justify-content:center;height:100%;" class="reveal">
         <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:6px;">Want to be our next Smile of the Month?</div>
         <p style="font-size:.84rem;color:var(--slate);margin-bottom:18px;line-height:1.7;">Book your free consultation today.</p>
         <a href="#book" class="btn-primary" style="font-size:.82rem;padding:11px 24px;">Book Free Consultation →</a>
