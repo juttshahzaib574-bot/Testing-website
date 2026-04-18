@@ -28,8 +28,10 @@
   --ease:cubic-bezier(.16,1,.3,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html, body { width: 100%; max-width: 100vw; margin: 0; padding: 0; overflow-x: hidden; }
 html{scroll-behavior:smooth;}
-body{background:var(--night);color:var(--pearl);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6;}
+body{background:var(--night);color:var(--pearl);font-family:'DM Sans',sans-serif;line-height:1.6;}
+section, header, nav, footer, #ebanner { width: 100%; box-sizing: border-box; }
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;height:auto;}
 button{font-family:'DM Sans',sans-serif;}
@@ -188,8 +190,8 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 
 /* SMILE OF THE MONTH */
 #sotm{padding:90px 60px;}
-.sotm-layout{display:flex;flex-direction:column;gap:50px;margin-top:50px;}
-.sotm-main{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.sotm-layout{display:flex;flex-direction:column;gap:50px;margin-top:50px;width:100%;}
+.sotm-main{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;width:100%;}
 .sotm-imgs{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
 .sotm-img-big{grid-column:span 2;}
 .sotm-img-big img{width:100%;height:380px;object-fit:cover;}
@@ -202,9 +204,11 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .sotm-quote{font-family:'Cormorant Garamond',serif;font-size:1.06rem;font-style:italic;color:var(--pearl);line-height:1.75;opacity:.9;}
 .sotm-stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-top:14px;}
 
-.sotm-side{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:10px;}
+.sotm-side-wrap{position:relative;width:100%;overflow:hidden;}
+.sotm-side{display:flex;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;gap:24px;padding-bottom:10px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;width:100%;}
 .sotm-side::-webkit-scrollbar{display:none;}
-.sotm-mini{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:all .4s var(--ease);flex:0 0 calc(50% - 12px);scroll-snap-align:start;}
+.sotm-side:active{cursor:grabbing;}
+.sotm-mini{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:all .4s var(--ease);flex:0 0 calc(45% - 12px);scroll-snap-align:start;}
 .sotm-mini:hover{border-color:var(--mint);transform:translateY(-4px);}
 .sotm-mini img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;flex-shrink:0;}
 .sotm-mini-body{padding:24px;display:flex;flex-direction:column;justify-content:center;flex:1;}
@@ -213,7 +217,15 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .sotm-mini-tx{font-size:.76rem;color:var(--slate);}
 .sotm-mini-stars{color:var(--gold);font-size:.72rem;margin-top:6px;}
 
-.sotm-hz-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+@keyframes swipeHintAnim{
+  0%{transform:translateX(0);}
+  15%{transform:translateX(-30px);}
+  30%{transform:translateX(0);}
+  100%{transform:translateX(0);}
+}
+.swipe-hint{animation:swipeHintAnim 3s ease-in-out 1; animation-delay:1s;}
+
+.sotm-hz-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;}
 .sotm-hz-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:6px;}
 .sotm-hz-desc{font-size:.84rem;color:var(--slate);line-height:1.7;}
 .sotm-hz-btn{font-size:.82rem;padding:12px 28px;white-space:nowrap;}
@@ -557,8 +569,8 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .sotm-img-half img{height:140px;}
   .sotm-body{padding:26px 20px;}
   
-  .sotm-side { gap: 16px; margin-left: 0; margin-right: 0; padding-bottom: 10px; }
-  .sotm-mini { flex: 0 0 100%; }
+  .sotm-side { gap: 16px; margin-left: -16px; margin-right: -16px; padding: 10px 16px 20px; width: 100vw; max-width: 100vw;}
+  .sotm-mini { flex: 0 0 calc(85% - 8px); }
   .sotm-hz-card { flex-direction:column; text-align:center; padding:24px 20px; }
   
   .t-grid{display:flex; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:10px 16px 30px; margin-left:-16px; margin-right:-16px; scrollbar-width:none; -ms-overflow-style:none;}
@@ -841,50 +853,59 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
       </div>
     </div>
     
-    <div class="sotm-side" id="sotm-track">
-      <div class="sotm-mini reveal">
-        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=400&q=80&auto=format&fit=crop" alt="James T." loading="lazy">
-        <div class="sotm-mini-body">
-          <div class="sotm-mini-badge">May 2025</div>
-          <div class="sotm-mini-name">James T.</div>
-          <div class="sotm-mini-tx">Invisalign® — 7 months · Complete alignment transformation</div>
-          <div class="sotm-mini-stars">★★★★★</div>
+    <div class="sotm-side-wrap reveal">
+      <div class="sotm-side swipe-hint" id="sotm-track">
+        <div class="sotm-mini">
+          <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=400&q=80&auto=format&fit=crop" alt="James T." loading="lazy">
+          <div class="sotm-mini-body">
+            <div class="sotm-mini-badge">May 2025</div>
+            <div class="sotm-mini-name">James T.</div>
+            <div class="sotm-mini-tx">Invisalign® — 7 months · Complete alignment transformation</div>
+            <div class="sotm-mini-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="sotm-mini">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop" alt="Sophia M." loading="lazy">
+          <div class="sotm-mini-body">
+            <div class="sotm-mini-badge">April 2025</div>
+            <div class="sotm-mini-name">Sophia M.</div>
+            <div class="sotm-mini-tx">Full Smile Makeover — Veneers + Whitening + Hygiene</div>
+            <div class="sotm-mini-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="sotm-mini">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format&fit=crop" alt="Olivia R." loading="lazy">
+          <div class="sotm-mini-body">
+            <div class="sotm-mini-badge">March 2025</div>
+            <div class="sotm-mini-name">Olivia R.</div>
+            <div class="sotm-mini-tx">Teeth Whitening — Single Session · 8 Shades Brighter</div>
+            <div class="sotm-mini-stars">★★★★★</div>
+          </div>
+        </div>
+        <div class="sotm-mini">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop" alt="Marcus B." loading="lazy">
+          <div class="sotm-mini-body">
+            <div class="sotm-mini-badge">February 2025</div>
+            <div class="sotm-mini-name">Marcus B.</div>
+            <div class="sotm-mini-tx">Porcelain Veneers — 3 Appointments · Complete Restoration</div>
+            <div class="sotm-mini-stars">★★★★★</div>
+          </div>
+        </div>
+        <a href="#gallery" class="sotm-mini" style="text-decoration:none; background:rgba(0,222,182,0.05); border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center;">
+          <div style="padding:40px;">
+            <div style="font-size:3rem; margin-bottom:16px;">📸</div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--white); margin-bottom:10px;">See Full Gallery</h3>
+            <div style="font-size:.76rem; color:var(--mint); letter-spacing:.1em; text-transform:uppercase;">Explore More Transformations →</div>
+          </div>
+        </a>
+      </div>
+      <div class="carousel-ctrl" style="margin-top: 15px;">
+        <div class="carousel-dots" id="sotm-dots"></div>
+        <div class="carousel-arrows">
+          <button class="c-arr" id="sotm-prev" aria-label="Previous">←</button>
+          <button class="c-arr" id="sotm-next" aria-label="Next">→</button>
         </div>
       </div>
-      <div class="sotm-mini reveal">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop" alt="Sophia M." loading="lazy">
-        <div class="sotm-mini-body">
-          <div class="sotm-mini-badge">April 2025</div>
-          <div class="sotm-mini-name">Sophia M.</div>
-          <div class="sotm-mini-tx">Full Smile Makeover — Veneers + Whitening + Hygiene</div>
-          <div class="sotm-mini-stars">★★★★★</div>
-        </div>
-      </div>
-      <div class="sotm-mini reveal">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format&fit=crop" alt="Olivia R." loading="lazy">
-        <div class="sotm-mini-body">
-          <div class="sotm-mini-badge">March 2025</div>
-          <div class="sotm-mini-name">Olivia R.</div>
-          <div class="sotm-mini-tx">Teeth Whitening — Single Session · 8 Shades Brighter</div>
-          <div class="sotm-mini-stars">★★★★★</div>
-        </div>
-      </div>
-      <div class="sotm-mini reveal">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop" alt="Marcus B." loading="lazy">
-        <div class="sotm-mini-body">
-          <div class="sotm-mini-badge">February 2025</div>
-          <div class="sotm-mini-name">Marcus B.</div>
-          <div class="sotm-mini-tx">Porcelain Veneers — 3 Appointments · Complete Restoration</div>
-          <div class="sotm-mini-stars">★★★★★</div>
-        </div>
-      </div>
-      <a href="#gallery" class="sotm-mini reveal" style="text-decoration:none; background:rgba(0,222,182,0.05); border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center;">
-        <div style="padding:40px;">
-          <div style="font-size:3rem; margin-bottom:16px;">📸</div>
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--white); margin-bottom:10px;">See Full Gallery</h3>
-          <div style="font-size:.76rem; color:var(--mint); letter-spacing:.1em; text-transform:uppercase;">Explore More Transformations →</div>
-        </div>
-      </a>
     </div>
 
     <div class="sotm-hz-card reveal">
@@ -1107,7 +1128,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
       <div class="loc-item"><div class="loc-ico">🕐</div><div><div class="loc-label">Opening Hours</div><div class="loc-val"><div class="hrs"><span class="day">Mon–Fri</span><span class="time">8:00am – 7:00pm</span><span class="day">Saturday</span><span class="time">9:00am – 3:00pm</span><span class="day">Sunday</span><span class="time" style="color:var(--red)">Closed</span></div></div></div></div>
     </div>
     <div class="map-embed">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.5285074839697!2d-0.14923812306107!3d51.519409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761acec1d2df6d%3A0x6b6aaae7b6f1c62b!2s1%20Harley%20St%2C%20London%20W1G%209QD!5e0!3m2!1sen!2suk!4v1700000000000" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PearlSmile Dental on Google Maps"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.5285074839697!2d-0.14923812306107!3d51.519409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761acec1d2df6d%3A0x6b6aaae7b6f1c62b!2s1%20Harley%20St%2C%20London%20W1G%209QD!5e0!3m2!1sen!2suk!4v1700000000000" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PearlSmile Dental on Google Maps"></iframe>
     </div>
   </div>
 </section>
@@ -1287,6 +1308,58 @@ document.querySelectorAll('.ba-wrap').forEach(wrap => {
   let tx0 = 0;
   track.addEventListener('touchstart', e => tx0 = e.touches[0].clientX, { passive: true });
   track.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx0; if (Math.abs(dx) > 48) go(cur + (dx < 0 ? 1 : -1)); });
+})();
+
+/* ══════════ SOTM CAROUSEL ══════════ */
+(function() {
+  const track = document.getElementById('sotm-track');
+  const prev = document.getElementById('sotm-prev');
+  const next = document.getElementById('sotm-next');
+  const dotsWrap = document.getElementById('sotm-dots');
+  
+  if(track && prev && next && dotsWrap) {
+    prev.addEventListener('click', () => track.scrollBy({ left: -track.offsetWidth / 1.5, behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left: track.offsetWidth / 1.5, behavior: 'smooth' }));
+
+    const cards = track.querySelectorAll('.sotm-mini');
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'c-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'SOTM Slide ' + (i + 1));
+      d.addEventListener('click', () => {
+        track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      });
+      dotsWrap.appendChild(d);
+    });
+
+    track.addEventListener('scroll', () => {
+      if(!cards.length) return;
+      let scrollPos = track.scrollLeft;
+      let cardWidth = cards[0].offsetWidth;
+      let index = Math.round(scrollPos / cardWidth);
+      if(index >= cards.length) index = cards.length - 1;
+      document.querySelectorAll('#sotm-dots .c-dot').forEach((d, i) => d.classList.toggle('active', i === index));
+    }, { passive: true });
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      track.classList.add('active');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+    track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('active'); });
+    track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('active'); });
+    track.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 2;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  }
 })();
 
 /* ══════════ FAQ ══════════ */
