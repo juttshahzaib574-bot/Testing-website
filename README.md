@@ -201,15 +201,23 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 .sotm-tx::before{content:'';width:14px;height:1px;background:var(--mint);}
 .sotm-quote{font-family:'Cormorant Garamond',serif;font-size:1.06rem;font-style:italic;color:var(--pearl);line-height:1.75;opacity:.9;}
 .sotm-stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-top:14px;}
-.sotm-side{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.sotm-mini{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:all .4s var(--ease);height:100%;}
+
+.sotm-side{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:10px;}
+.sotm-side::-webkit-scrollbar{display:none;}
+.sotm-mini{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:all .4s var(--ease);flex:0 0 calc(50% - 12px);scroll-snap-align:start;}
 .sotm-mini:hover{border-color:var(--mint);transform:translateY(-4px);}
-.sotm-mini img{width:100%;height:220px;object-fit:cover;flex-shrink:0;}
+.sotm-mini img{width:100%;aspect-ratio:1/1;height:auto;object-fit:cover;flex-shrink:0;}
 .sotm-mini-body{padding:24px;display:flex;flex-direction:column;justify-content:center;flex:1;}
 .sotm-mini-badge{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin-bottom:5px;}
 .sotm-mini-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:4px;}
 .sotm-mini-tx{font-size:.76rem;color:var(--slate);}
 .sotm-mini-stars{color:var(--gold);font-size:.72rem;margin-top:6px;}
+
+.sotm-hz-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.sotm-hz-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:6px;}
+.sotm-hz-desc{font-size:.84rem;color:var(--slate);line-height:1.7;}
+.sotm-hz-btn{font-size:.82rem;padding:12px 28px;white-space:nowrap;}
+
 .doc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;height:100%;transition:all .4s var(--ease);}
 .doc-card:hover{border-color:var(--mint);transform:translateY(-4px);}
 .doc-card img{width:100%;height:220px;object-fit:cover;object-position:top;flex-shrink:0;}
@@ -245,6 +253,7 @@ nav{position:sticky;top:var(--ban-h);z-index:900;height:var(--nav-h);display:fle
 }
 @media(max-width: 900px) {
   .sotm-layout{gap:30px;}
+  .sotm-mini { flex: 0 0 calc(50% - 12px); }
   .vs-carousel-wrap { margin-left: -22px; margin-right: -22px; padding: 10px 22px; }
   .vs-card { flex: 0 0 calc(50% - 12px); }
 }
@@ -500,6 +509,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .ba-wrap{aspect-ratio:4/3;}
   .slide-info{padding:34px 28px;}
   .sotm-layout{gap:30px;}
+  .sotm-mini { flex: 0 0 calc(50% - 12px); }
   .t-grid{grid-template-columns:1fr 1fr;}
   .faq-layout{grid-template-columns:1fr;gap:36px;}
   .book-layout{grid-template-columns:1fr;gap:36px;}
@@ -546,7 +556,10 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
   .sotm-img-big img{height:220px;}
   .sotm-img-half img{height:140px;}
   .sotm-body{padding:26px 20px;}
-  .sotm-side { grid-template-columns: 1fr 1fr; }
+  
+  .sotm-side { gap: 16px; margin-left: 0; margin-right: 0; padding-bottom: 10px; }
+  .sotm-mini { flex: 0 0 100%; }
+  .sotm-hz-card { flex-direction:column; text-align:center; padding:24px 20px; }
   
   .t-grid{display:flex; flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; gap:16px; padding:10px 16px 30px; margin-left:-16px; margin-right:-16px; scrollbar-width:none; -ms-overflow-style:none;}
   .t-grid::-webkit-scrollbar{display:none;}
@@ -827,9 +840,10 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
         </div>
       </div>
     </div>
-    <div class="sotm-side">
+    
+    <div class="sotm-side" id="sotm-track">
       <div class="sotm-mini reveal">
-        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=200&q=80&auto=format&fit=crop" alt="James T." loading="lazy">
+        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=400&q=80&auto=format&fit=crop" alt="James T." loading="lazy">
         <div class="sotm-mini-body">
           <div class="sotm-mini-badge">May 2025</div>
           <div class="sotm-mini-name">James T.</div>
@@ -838,7 +852,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
         </div>
       </div>
       <div class="sotm-mini reveal">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80&auto=format&fit=crop" alt="Sophia M." loading="lazy">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop" alt="Sophia M." loading="lazy">
         <div class="sotm-mini-body">
           <div class="sotm-mini-badge">April 2025</div>
           <div class="sotm-mini-name">Sophia M.</div>
@@ -846,20 +860,39 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:70px 60
           <div class="sotm-mini-stars">★★★★★</div>
         </div>
       </div>
-      <div class="doc-card reveal">
-        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=300&q=80&auto=format&fit=crop&facepad=3" alt="Dr James Chen" loading="lazy">
-        <div class="doc-body">
-          <div class="doc-ey">Featured Clinician</div>
-          <div class="doc-name">Dr. James Chen</div>
-          <div class="doc-title">BDS (King's), MSc Implantology · GDC No. 000001</div>
-          <p class="doc-quote">"Every patient deserves to feel proud of their smile. My goal is not just to treat teeth — it's to change lives."</p>
+      <div class="sotm-mini reveal">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format&fit=crop" alt="Olivia R." loading="lazy">
+        <div class="sotm-mini-body">
+          <div class="sotm-mini-badge">March 2025</div>
+          <div class="sotm-mini-name">Olivia R.</div>
+          <div class="sotm-mini-tx">Teeth Whitening — Single Session · 8 Shades Brighter</div>
+          <div class="sotm-mini-stars">★★★★★</div>
         </div>
       </div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center;display:flex;flex-direction:column;justify-content:center;height:100%;" class="reveal">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:6px;">Want to be our next Smile of the Month?</div>
-        <p style="font-size:.84rem;color:var(--slate);margin-bottom:18px;line-height:1.7;">Book your free consultation today.</p>
-        <a href="#book" class="btn-primary" style="font-size:.82rem;padding:11px 24px;">Book Free Consultation →</a>
+      <div class="sotm-mini reveal">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop" alt="Marcus B." loading="lazy">
+        <div class="sotm-mini-body">
+          <div class="sotm-mini-badge">February 2025</div>
+          <div class="sotm-mini-name">Marcus B.</div>
+          <div class="sotm-mini-tx">Porcelain Veneers — 3 Appointments · Complete Restoration</div>
+          <div class="sotm-mini-stars">★★★★★</div>
+        </div>
       </div>
+      <a href="#gallery" class="sotm-mini reveal" style="text-decoration:none; background:rgba(0,222,182,0.05); border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center;">
+        <div style="padding:40px;">
+          <div style="font-size:3rem; margin-bottom:16px;">📸</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:var(--white); margin-bottom:10px;">See Full Gallery</h3>
+          <div style="font-size:.76rem; color:var(--mint); letter-spacing:.1em; text-transform:uppercase;">Explore More Transformations →</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="sotm-hz-card reveal">
+      <div>
+        <div class="sotm-hz-title">Want to be our next Smile of the Month?</div>
+        <p class="sotm-hz-desc">Book your free consultation today.</p>
+      </div>
+      <a href="#book" class="btn-primary sotm-hz-btn">Book Free Consultation →</a>
     </div>
   </div>
 </section>
